@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب - كولور لاب</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/polish.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        body {
+            background-color: var(--color-bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .login-container {
+            width: 100%;
+            max-width: 500px;
+            padding: 2rem;
+        }
+        .login-card {
+            background: #FFF;
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-hover);
+            text-align: center;
+        }
+        .login-header {
+            margin-bottom: 2rem;
+        }
+        .login-header h2 {
+            font-size: 1.75rem;
+            margin-top: 1rem;
+        }
+        .login-footer {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card fade-in">
+            <div class="login-header">
+                <a href="../index.html"><img src="../icons/logo.svg" alt="كولور لاب" height="32"></a>
+                <h2>إنشاء حساب جديد</h2>
+                <p class="text-muted">ابدأ ببناء أنظمة ألوان أفضل لمشاريعك اليوم</p>
+            </div>
+            
+            <form action="#">
+                <div class="form-group text-right">
+                    <label class="form-label">الاسم الكامل</label>
+                    <input type="text" class="form-control" placeholder="فلان الفلاني" required>
+                </div>
+                <div class="form-group text-right">
+                    <label class="form-label">البريد الإلكتروني</label>
+                    <input type="email" class="form-control" placeholder="name@company.com" required>
+                </div>
+                <div class="form-group text-right">
+                    <label class="form-label">كلمة المرور</label>
+                    <input type="password" class="form-control" placeholder="••••••••" required>
+                </div>
+                <div class="form-group text-right">
+                    <label class="form-label">تأكيد كلمة المرور</label>
+                    <input type="password" class="form-control" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 btn-lg">إنشاء الحساب</button>
+            </form>
+            
+            <div class="login-footer">
+                لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

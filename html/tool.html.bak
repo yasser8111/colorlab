@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كولور لاب - أداة توليد الأنظمة</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Architecture -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/motion.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Inline style for the tool specifically until moved to components if needed -->
+    <style>
+        .input-group { margin-bottom: 1.5rem; }
+        .input-label { display: block; font-weight: 500; margin-bottom: 0.5rem; color: var(--color-text-muted); font-size: 0.875rem; }
+        .form-control { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); font-family: inherit; font-size: 1rem; transition: border-color var(--transition-fast); }
+        .form-control:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1); }
+        
+        /* Flex row for color input */
+        .color-input-row { display: flex; gap: 0.5rem; }
+        .color-picker { width: 48px; border: none; padding: 0; cursor: pointer; border-radius: var(--radius-md); height: 48px; flex-shrink: 0; background-color: transparent; }
+        .color-picker::-webkit-color-swatch-wrapper { padding: 0; }
+        .color-picker::-webkit-color-swatch { border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+        
+        .toast-container { position: fixed; bottom: 2rem; inset-inline-start: 2rem; z-index: 1000; display: flex; flex-direction: column; gap: 0.5rem; }
+        .toast { background: var(--color-text); color: #fff; padding: 1rem 1.5rem; border-radius: var(--radius-md); box-shadow: var(--shadow-hover); font-size: 0.9rem; font-weight: 500; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; }
+        .toast.show { opacity: 1; transform: translateY(0); }
+
+        .app-header { margin: -2rem -2rem 2rem -2rem; padding: 1.25rem 2rem; display: flex; align-items: center; gap: 1rem; position: sticky; top: 0; z-index: 100; background-color: var(--color-bg); border-bottom: 1px solid var(--color-border); box-shadow: 0 4px 6px -4px rgba(0,0,0,0.05); }
+        .app-header-home { margin-bottom: 0; display: inline-block; font-weight: 700; color: var(--color-primary); text-decoration: none;}
+        .app-header-home img { width: 100px; }
+        
+        .empty-state { text-align: center; padding: 5rem 0; color: var(--color-text-muted); }
+        .empty-state-icon { font-size: 3rem; margin-bottom: 1rem; color: #CBD5E1; display: flex;justify-content: center;align-items: center; }
+        
+        .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(450px, 100%), 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .swatch-info { display: flex; flex-direction: column; min-width: 0; overflow: hidden; }
+        .swatch-name { font-size: 0.75rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .swatch-hex { font-size: 0.7rem; opacity: 0.7; font-family: monospace; }
+        
+        .palette-card { cursor: pointer; border: 2px solid transparent; }
+        .palette-card.active { border-color: var(--color-accent); box-shadow: var(--shadow-hover); }
+        .palette-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; font-weight: 600; }
+        
+        .swatch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
+        .swatch-item { border-radius: var(--radius-md); border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: center; padding: 0.75rem; height: 64px; font-family: inherit; cursor: copy; position: relative; overflow: hidden; }
+        .swatch-text-role, .swatch-text-hex { display: none; } /* Hide old classes */
+        .contrast-warning { position: absolute; top: 4px; inset-inline-start: 4px; background: #EF4444; color: white; border-radius: 50%; width: 14px; height: 14px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; cursor: help; }
+        
+        /* Skeleton Animation */
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+        .skeleton { animation: pulse 1.5s ease-in-out infinite; background-color: #E2E8F0; border-radius: var(--radius-sm); }
+        .skeleton-text { height: 1rem; width: 60%; margin-bottom: 0.5rem; }
+        .skeleton-swatch { height: 60px; }
+        
+        /* Preview Template Frame */
+        .preview-container { 
+            border: 1px solid var(--color-border); 
+            border-radius: var(--radius-lg); 
+            overflow: hidden; 
+            box-shadow: var(--shadow-soft); 
+            display: none;
+            font-family: var(--preview-font, inherit);
+        }
+        .preview-header { padding: 1rem 2rem; border-bottom: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; }
+        .preview-content { display: flex; flex-direction: column; gap: 3rem; align-items: center; text-align: center; height: calc(100vh - 250px)}
+        
+        /* Local UI States */
+        #generating-view { display: none; }
+        #results-view { display: none; }
+
+        .saved-palettes-list { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .saved-item { padding: 0.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: space-between; background: #fff; cursor: pointer;}
+        .saved-item:hover { border-color: var(--color-primary); }
+        .saved-item-colors { display: flex; height: 20px; width: 80px; border-radius: 2px; overflow: hidden; }
+        .saved-item-colors div { flex: 1; }
+        .btn-icon-svg { background: transparent; border: 1px solid var(--color-border); border-radius: var(--radius-sm); color: var(--color-text); cursor: pointer; padding: 0.5rem; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-soft); transition: all 0.2s;}
+        .btn-icon-svg:hover { background: var(--color-bg-alt); }
+        .btn-icon { background: transparent; border: none; color: var(--color-text-muted); cursor: pointer; padding: 4px; display: inline-flex; align-items: center; justify-content: center; }
+        .btn-icon:hover { color: var(--color-primary); }
+    </style>
+</head>
+<body class="bg-alt">
+
+    <!-- Sidebar backdrop for mobile/tablet -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- Mobile FAB to open sidebar -->
+    <button class="tool-fab" id="tool-fab" aria-label="فتح لوحة التحكم">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+        التحكم
+    </button>
+
+    <div class="app-layout">
+        
+        <!-- Sidebar Controls -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-close">
+                <a href="../index.html" class="app-header-home"><img src="../icons/logo.svg" alt="كولور لاب" height="24"></a>
+            </div>
+            
+            <form id="generator-form">
+                <div class="input-group">
+                    <label for="base-color" class="input-label">اللون الأساسي (HEX، RGB، أو اسم)</label>
+                    <div class="color-input-row">
+                        <input type="color" id="base-color-picker" class="color-picker" value="#1A56FF">
+                        <input type="text" id="base-color" class="form-control" value="#1A56FF" placeholder="مثلاً: blue، #1A56FF" autocomplete="off">
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="website-type" class="input-label">نوع الموقع المستهدف</label>
+                    <select id="website-type" class="form-control">
+                        <option value="saas">منصة SaaS</option>
+                        <option value="ecommerce">متجر إلكتروني</option>
+                        <option value="portfolio">بورتفوليو</option>
+                        <option value="corporate">موقع شركات</option>
+                        <option value="dashboard">لوحة تحكم / لوحة أدمن</option>
+                        <option value="blog">مدونة / موقع محتوى</option>
+                        <option value="restaurant">مطعم</option>
+                        <option value="mobileapp">تطبيق جوال</option>
+                    </select>
+                </div>
+                
+                <button type="submit" id="generate-btn" class="btn btn-primary w-100 btn-lg mt-4">توليد الأنظمة</button>
+            </form>
+            
+            <hr style="border: 0; border-top: 1px solid var(--color-border); margin: 2rem 0;">
+            
+            <!-- Saved Palettes Panel -->
+            <div>
+                <h3 style="font-size: 1rem;">اللوحات المحفوظة</h3>
+                <div id="saved-palettes-container" class="saved-palettes-list">
+                    <div class="text-sm text-muted mt-4">لا توجد لوحات محفوظة بعد.</div>
+                </div>
+            </div>
+            
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            
+            <div class="app-header">
+                <button type="button" id="toggle-sidebar-btn" class="btn-icon-svg" aria-label="تبديل القائمة الجانبية">
+                    <img id="toggle-sidebar-icon" src="../icons/menu.svg" width="20" height="20" alt="القائمة">
+                </button>
+                <div>
+                    <h1 style="font-size: 1.5rem;">استوديو الألوان</h1>
+                    <p class="text-muted text-sm">اختر لوناً أساسياً وهدفاً لبناء نظام ألوان واجهتك.</p>
+                </div>
+            </div>
+            
+            <!-- Default Empty State -->
+            <div id="empty-view" class="empty-state">
+                <div class="empty-state-icon"><img src="../icons/sliders.svg" width="48" height="48" alt="جاهز"></div>
+                <h2>جاهز للتوليد</h2>
+                <p>قدم مدخلاتك في القائمة الجانبية لحساب 10 لوحات ألوان محسنة.</p>
+                <button class="btn btn-primary btn-lg mt-4" id="start-generating-btn" aria-label="ابدأ التوليد">ابدأ التوليد</button>
+            </div>
+            
+            <!-- Generating State (Skeletons) -->
+            <div id="generating-view">
+                <div class="palette-grid">
+                    <!-- 6 High-Fidelity Skeletons matching exact palette card structure -->
+                    <div class="card palette-card skeleton" style="pointer-events: none; opacity: 0.8;">
+                        <div class="palette-header" style="align-items: flex-start; margin-bottom: 2rem; display: flex; justify-content: space-between;">
+                            <div class="skeleton" style="height: 24px; width: 140px; border-radius: 4px;"></div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <div class="skeleton" style="height: 32px; width: 70px; border-radius: 4px;"></div>
+                                <div class="skeleton" style="height: 32px; width: 60px; border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                        <div class="swatch-grid">
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                        </div>
+                    </div>
+                    <!-- Duplicate to fill grid -->
+                    <div class="card palette-card skeleton" style="pointer-events: none; opacity: 0.7;">
+                        <div class="palette-header" style="align-items: flex-start; margin-bottom: 2rem; display: flex; justify-content: space-between;">
+                            <div class="skeleton" style="height: 24px; width: 110px; border-radius: 4px;"></div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <div class="skeleton" style="height: 32px; width: 70px; border-radius: 4px;"></div>
+                                <div class="skeleton" style="height: 32px; width: 60px; border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                        <div class="swatch-grid">
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                        </div>
+                    </div>
+                    <div class="card palette-card skeleton" style="pointer-events: none; opacity: 0.6;">
+                        <div class="palette-header" style="align-items: flex-start; margin-bottom: 2rem; display: flex; justify-content: space-between;">
+                            <div class="skeleton" style="height: 24px; width: 160px; border-radius: 4px;"></div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <div class="skeleton" style="height: 32px; width: 70px; border-radius: 4px;"></div>
+                                <div class="skeleton" style="height: 32px; width: 60px; border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                        <div class="swatch-grid">
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                        </div>
+                    </div>
+                    <div class="card palette-card skeleton" style="pointer-events: none; opacity: 0.5;">
+                        <div class="palette-header" style="align-items: flex-start; margin-bottom: 2rem; display: flex; justify-content: space-between;">
+                            <div class="skeleton" style="height: 24px; width: 130px; border-radius: 4px;"></div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <div class="skeleton" style="height: 32px; width: 70px; border-radius: 4px;"></div>
+                                <div class="skeleton" style="height: 32px; width: 60px; border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                        <div class="swatch-grid">
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                            <div class="skeleton skeleton-swatch"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results State -->
+            <div id="results-view" class="fade-in">
+                <div id="palette-grid" class="palette-grid">
+                    <!-- Palette Cards injected by JS -->
+                </div>
+                
+                <!-- Live UI Preview Concept -->
+                <div id="live-preview" class="preview-container" style="font-family: 'Cairo', sans-serif; direction: rtl;">
+
+                    <!-- Browser Bar -->
+                    <div style="background: #f1f5f9; padding: 0.6rem 1rem; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f56;"></span>
+                        <span style="width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e;"></span>
+                        <span style="width: 10px; height: 10px; border-radius: 50%; background: #27c93f;"></span>
+                        <div style="flex: 1; margin: 0 0.75rem; background: #e2e8f0; border-radius: 6px; height: 22px; display: flex; align-items: center; padding: 0 0.75rem;">
+                            <span style="font-size: 0.7rem; color: #94a3b8; font-family: monospace;">colorlab.design</span>
+                        </div>
+                    </div>
+
+                    <!-- Fake UI Page -->
+                    <div style="background-color: var(--preview-bg); min-height: 400px; overflow: hidden;">
+
+                        <!-- Nav -->
+                        <nav style="background-color: var(--preview-surface); border-bottom: 1px solid var(--preview-border); padding: 0.85rem 2rem; display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 28px; height: 28px; border-radius: 8px; background-color: var(--preview-primary);"></div>
+                                <span style="font-weight: 700; font-size: 0.95rem; color: var(--preview-text-pri);">براند اللون</span>
+                            </div>
+                            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                                <span style="font-size: 0.8rem; color: var(--preview-text-sec);">المنتج</span>
+                                <span style="font-size: 0.8rem; color: var(--preview-text-sec);">الأسعار</span>
+                                <span style="font-size: 0.8rem; color: var(--preview-text-sec);">عن الخدمة</span>
+                                <button style="background-color: var(--preview-primary); color: #fff; border: none; padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600; font-family: 'Cairo', sans-serif; cursor: pointer;">ابدأ الآن</button>
+                            </div>
+                        </nav>
+
+                        <!-- Hero -->
+                        <div style="padding: 3rem 2.5rem 2rem; display: flex; align-items: center; gap: 2rem;">
+                            <!-- Text -->
+                            <div style="flex: 1;">
+                                <div style="display: inline-flex; align-items: center; gap: 0.4rem; background-color: var(--preview-card); border: 1px solid var(--preview-border); border-radius: 20px; padding: 0.25rem 0.75rem; margin-bottom: 1rem;">
+                                    <span style="width: 6px; height: 6px; border-radius: 50%; background-color: var(--preview-accent);"></span>
+                                    <span style="font-size: 0.7rem; font-weight: 700; color: var(--preview-accent);">جديد</span>
+                                </div>
+                                <h1 style="font-size: 2rem; font-weight: 800; color: var(--preview-text-pri); line-height: 1.2; margin-bottom: 0.75rem;">ألوان تصنع<br>الفارق الحقيقي.</h1>
+                                <p style="font-size: 0.85rem; color: var(--preview-text-sec); line-height: 1.7; margin-bottom: 1.5rem; max-width: 360px;">نظام ألوان احترافي في ثوانٍ. توليد تلقائي متكامل لكل مشاريعك.</p>
+                                <div style="display: flex; gap: 0.75rem;">
+                                    <button style="background-color: var(--preview-primary); color: #fff; border: none; padding: 0.6rem 1.4rem; border-radius: 10px; font-size: 0.85rem; font-weight: 700; font-family: 'Cairo', sans-serif; cursor: pointer;">ابدأ مجاناً</button>
+                                    <button style="background-color: transparent; color: var(--preview-text-pri); border: 1.5px solid var(--preview-border); padding: 0.6rem 1.4rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600; font-family: 'Cairo', sans-serif; cursor: pointer;">تعرف أكثر</button>
+                                </div>
+                            </div>
+
+                            <!-- Palette Preview Card -->
+                            <div style="flex-shrink: 0; width: 220px; background-color: var(--preview-card); border: 1px solid var(--preview-border); border-radius: 16px; padding: 1.25rem; box-shadow: 0 8px 24px rgba(0,0,0,0.07);">
+                                <p style="font-size: 0.7rem; font-weight: 700; color: var(--preview-text-sec); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">لوحة الألوان</p>
+                                <!-- Swatches -->
+                                <div style="display: flex; gap: 0.4rem; margin-bottom: 0.5rem;">
+                                    <div style="flex: 2; height: 48px; border-radius: 8px; background-color: var(--preview-primary);"></div>
+                                    <div style="flex: 1; height: 48px; border-radius: 8px; background-color: var(--preview-secondary);"></div>
+                                    <div style="flex: 1; height: 48px; border-radius: 8px; background-color: var(--preview-accent);"></div>
+                                </div>
+                                <div style="display: flex; gap: 0.4rem;">
+                                    <div style="flex: 1; height: 28px; border-radius: 6px; background-color: var(--preview-surface); border: 1px solid var(--preview-border);"></div>
+                                    <div style="flex: 1; height: 28px; border-radius: 6px; background-color: var(--preview-bg); border: 1px solid var(--preview-border);"></div>
+                                    <div style="flex: 1; height: 28px; border-radius: 6px; background-color: var(--preview-text-pri); opacity: 0.15; border-radius: 6px;"></div>
+                                </div>
+                                <div style="margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid var(--preview-border); display: flex; align-items: center; justify-content: space-between;">
+                                    <span style="font-size: 0.7rem; color: var(--preview-text-sec);">6 ألوان توليد</span>
+                                    <div style="background-color: var(--preview-primary); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 20px;">نسخ</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stats Bar -->
+                        <div style="margin: 0 2.5rem 1.5rem; display: flex; gap: 1rem;">
+                            <div style="flex: 1; background-color: var(--preview-card); border: 1px solid var(--preview-border); border-radius: 12px; padding: 0.85rem 1rem; display: flex; align-items: center; gap: 0.75rem;">
+                                <div style="width: 32px; height: 32px; border-radius: 8px; background-color: var(--preview-primary); opacity: 0.15;"></div>
+                                <div>
+                                    <p style="font-size: 0.65rem; color: var(--preview-text-sec); margin-bottom: 0.1rem;">لوحات مولّدة</p>
+                                    <p style="font-size: 1rem; font-weight: 700; color: var(--preview-text-pri);">10</p>
+                                </div>
+                            </div>
+                            <div style="flex: 1; background-color: var(--preview-card); border: 1px solid var(--preview-border); border-radius: 12px; padding: 0.85rem 1rem; display: flex; align-items: center; gap: 0.75rem;">
+                                <div style="width: 32px; height: 32px; border-radius: 8px; background-color: var(--preview-secondary); opacity: 0.15;"></div>
+                                <div>
+                                    <p style="font-size: 0.65rem; color: var(--preview-text-sec); margin-bottom: 0.1rem;">نسبة التباين</p>
+                                    <p style="font-size: 1rem; font-weight: 700; color: var(--preview-text-pri);">AA+</p>
+                                </div>
+                            </div>
+                            <div style="flex: 1; background-color: var(--preview-card); border: 1px solid var(--preview-border); border-radius: 12px; padding: 0.85rem 1rem; display: flex; align-items: center; gap: 0.75rem;">
+                                <div style="w                       <div style="padding: 0.65rem 1.15rem; background-color: var(--preview-warning); color: #fff; border-radius: 30px; font-weight: 600; font-size: 0.8rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transform: translateX(-20px); display: flex; align-items: center; gap: 0.5rem; transition: background-color 0.4s ease, transform 0.3s ease;">
+                                        <span style="width: 6px; height: 6px; border-radius: 50%; background-color: #fff; opacity: 0.8;"></span>
+                                        متوازن (Balanced)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </main>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- JavaScript Execution Engine -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/preview.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/generator.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+</html>

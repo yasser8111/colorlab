@@ -1,0 +1,245 @@
+:root {
+/* ==========================================================================
+   Base CSS & Variables — ColorLab Design System
+   Inspired by Stripe, Linear, Vercel aesthetics.
+   ========================================================================== */
+
+  /* Brand Colors (Updated based on Logo Identity) */
+  --color-primary: #111111;
+  --color-primary-hover: #212121;
+  
+  /* Primary Brand Accent (the vibrant purple from logo) */
+  --color-accent: #7C3AED;
+  --color-accent-hover: #6D28D9;
+
+  /* Additional Identity Colors (from logo palette) */
+  --color-blue: #2563EB;
+  --color-cyan: #06B6D4;
+  --color-pink: #DB2777;
+  --color-yellow: #EAB308;
+
+  /* Hero CTA button uses the purple brand color */
+  --color-hero-cta: #7C3AED;
+  --color-hero-cta-hover: #6D28D9;
+
+  /* Neutral & Backgrounds */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f9fafb;
+  --color-surface: #ffffff;
+
+  /* Typography Colors */
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-text-light: #94a3b8;
+
+  /* Borders & Shadows */
+  --color-border: #e8eaed;
+  --color-border-hover: #c9d0d8;
+
+  /* Shadow scale — from barely-there to deep lift */
+  --shadow-xs:   0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-soft: 0 4px 16px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md:   0 8px 24px rgba(0, 0, 0, 0.07), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 20px 44px -8px rgba(0, 0, 0, 0.10), 0 8px 16px -4px rgba(0, 0, 0, 0.05);
+
+  /* Typography System */
+  --font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-arabic: "Cairo", "Inter", sans-serif;
+
+  /* Spacing & Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+  /* Layout */
+  --section-subtitle-max: 580px;
+
+  /* Transitions */
+  --transition-fast:   0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow:   0.48s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-hover);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure all form elements and buttons inherit the design system fonts */
+input, 
+button, 
+select, 
+textarea,
+optgroup {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+[lang="ar"] body,
+[dir="rtl"] body {
+  font-family: var(--font-arabic);
+}
+
+/* Typography Extensions */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+}
+
+[lang="ar"] h1,
+[lang="ar"] h2,
+[lang="ar"] h3,
+[lang="ar"] h4,
+[lang="ar"] h5,
+[lang="ar"] h6 {
+  letter-spacing: 0; /* Reset letter spacing for Arabic fonts */
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-text-muted);
+}
+
+ul {
+  list-style: none;
+}
+
+/* Generic Utility Classes — Using logical properties where possible */
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+.text-sm {
+  font-size: 0.875rem;
+}
+
+/* Backgrounds */
+.bg-primary {
+  background-color: var(--color-bg);
+}
+.bg-alt {
+  background-color: var(--color-bg-alt);
+}
+
+/* Spacing Helpers */
+.mt-4 {
+  margin-top: 1rem;
+}
+.mt-6 {
+  margin-top: 1.5rem;
+}
+.mt-8 {
+  margin-top: 2rem;
+}
+.mt-12 {
+  margin-top: 3rem;
+}
+
+.pt-12 {
+  padding-top: 3rem;
+}
+.pb-12 {
+  padding-bottom: 3rem;
+}
+.p-8 {
+  padding: 2rem;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Display Helpers */
+.w-100 {
+  width: 100%;
+}
+.w-80 {
+  width: 80%;
+}
+.w-60 {
+  width: 60%;
+}
+
+/* Fade in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}

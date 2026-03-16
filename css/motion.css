@@ -1,0 +1,626 @@
+/* ==========================================================================
+   Motion & Micro-Interaction CSS — ColorLab Premium UX Layer
+   Linear / Framer / Vercel inspired motion principles:
+   - Fast (200–350ms)
+   - Spring-like easing
+   - Purposeful (never decorative noise)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   GLOBAL EASING TOKENS
+   -------------------------------------------------------------------------- */
+
+:root {
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur-base: 280ms;
+  --dur-slow: 420ms;
+}
+
+/* --------------------------------------------------------------------------
+   1. ICON SYSTEM — Inline SVG utilities
+   -------------------------------------------------------------------------- */
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition:
+    transform var(--dur-fast) var(--ease-spring),
+    color var(--dur-fast) var(--ease-out);
+}
+
+/* Sizes */
+.icon-sm {
+  width: 16px;
+  height: 16px;
+}
+.icon-md {
+  width: 20px;
+  height: 20px;
+}
+.icon-lg {
+  width: 24px;
+  height: 24px;
+}
+.icon-xl {
+  width: 32px;
+  height: 32px;
+}
+
+/* Icon in icon-box wrapper */
+.icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #f5f5f5;
+  color: #555;
+  transition:
+    background var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out),
+    transform var(--dur-fast) var(--ease-spring);
+  flex-shrink: 0;
+}
+
+.icon-box.accent {
+  background: #f0f4ff;
+  color: var(--color-accent);
+}
+
+/* --------------------------------------------------------------------------
+   2. BUTTON MOTION — Tactile press feeling
+   -------------------------------------------------------------------------- */
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-spring),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.btn:active {
+  transform: scale(0.97) translateY(1px);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+/* Ripple effect on click */
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn:hover::after {
+  opacity: 1;
+}
+
+/* Icon inside button */
+.btn .icon {
+  transition: transform var(--dur-base) var(--ease-spring);
+  margin-left: 0.35em;
+}
+
+.btn:hover .icon {
+  transform: translateX(3px);
+}
+
+/* --------------------------------------------------------------------------
+   3. CARD HOVER — Premium lift with shadow bloom
+   -------------------------------------------------------------------------- */
+
+.card,
+.feature-card,
+.service-card,
+.testimonial-card,
+.pricing-card {
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    box-shadow var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+  will-change: transform;
+}
+
+/* Icon box lifts with card */
+.service-card:hover .icon-box,
+.feature-card:hover .icon-box {
+  background: #f0f4ff;
+  color: var(--color-accent);
+  transform: scale(1.08) rotate(-3deg);
+}
+
+/* --------------------------------------------------------------------------
+   4. NAVIGATION MOTION
+   -------------------------------------------------------------------------- */
+
+/* Active nav highlight */
+.nav-link.active {
+  color: var(--color-text);
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Hamburger icon morph (mobile) */
+.hamburger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    opacity var(--dur-fast) var(--ease-out);
+  transform-origin: center;
+}
+
+.nav-hamburger.open .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-hamburger.open .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile nav animates with responsive.css — see responsive.css for full definition */
+
+/* --------------------------------------------------------------------------
+   5. FAQ ACCORDION — Smooth height animation using grid trick
+   -------------------------------------------------------------------------- */
+
+.faq-card {
+  transition:
+    box-shadow var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+}
+
+.faq-content-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-base) var(--ease-spring);
+  overflow: hidden;
+}
+
+.faq-content-wrapper.open {
+  grid-template-rows: 1fr;
+}
+
+.faq-content-inner {
+  overflow: hidden;
+  padding: 0 1.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.925rem;
+  line-height: 1.75;
+}
+
+.faq-content-wrapper.open .faq-content-inner {
+  padding: 0 1.5rem 1.5rem;
+}
+
+/* Icon rotation */
+.faq-chevron {
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-light);
+  flex-shrink: 0;
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.faq-card.open .faq-chevron {
+  transform: rotate(180deg);
+  color: var(--color-text);
+}
+
+.faq-card.open .faq-header {
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Remove old display:none approach */
+.faq-content {
+  display: block !important;
+  padding: 0 !important;
+  animation: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. SCROLL REVEAL — Entrance animations with stagger
+   -------------------------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-spring);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.reveal-delay-1 {
+  transition-delay: 80ms;
+}
+.reveal-delay-2 {
+  transition-delay: 160ms;
+}
+.reveal-delay-3 {
+  transition-delay: 240ms;
+}
+.reveal-delay-4 {
+  transition-delay: 320ms;
+}
+
+/* Horizontal variant */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-spring);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(20px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-spring);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --------------------------------------------------------------------------
+   7. FORM — Animated focus states
+   -------------------------------------------------------------------------- */
+
+.form-control {
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out);
+}
+
+/* Label animates up when input focused (floating label prep) */
+.form-group {
+  position: relative;
+}
+
+/* Input wrapper icon support */
+.input-icon-wrapper {
+  position: relative;
+}
+
+.input-icon-wrapper .icon {
+  position: absolute;
+  left: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-light);
+  transition: color var(--dur-fast) var(--ease-out);
+  pointer-events: none;
+}
+
+.input-icon-wrapper:focus-within .icon {
+  color: var(--color-accent);
+}
+
+.input-icon-wrapper .form-control {
+  padding-left: 2.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. HERO — Staggered entrance on load
+   -------------------------------------------------------------------------- */
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  animation: heroFadeUp var(--dur-slow) var(--ease-spring) 50ms both;
+}
+
+.hero-subtitle {
+  animation: heroFadeUp var(--dur-slow) var(--ease-spring) 150ms both;
+}
+
+.hero-actions {
+  animation: heroFadeUp var(--dur-slow) var(--ease-spring) 250ms both;
+}
+
+.hero-interactive {
+  animation: heroFadeUp var(--dur-slow) var(--ease-spring) 350ms both;
+}
+
+.hero-visuals {
+  animation: heroFadeUp var(--dur-slow) var(--ease-spring) 200ms both;
+}
+
+/* --------------------------------------------------------------------------
+   9. COLOR BUTTON PICKER — Interactive feedback
+   -------------------------------------------------------------------------- */
+
+.color-btn {
+  cursor: pointer;
+  transition:
+    transform var(--dur-fast) var(--ease-spring),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.color-btn:hover {
+  transform: scale(1.22);
+}
+
+.color-btn.active {
+  transform: scale(1.18);
+}
+
+/* --------------------------------------------------------------------------
+   9b. HERO VISUAL CARDS — Subtle float effect
+   -------------------------------------------------------------------------- */
+
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: rotate(2.5deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(2.5deg) translateY(-6px);
+  }
+}
+
+@keyframes heroFloat2 {
+  0%,
+  100% {
+    transform: rotate(-3.5deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(-3.5deg) translateY(-5px);
+  }
+}
+
+.hero-palette-card {
+  animation: heroFloat 5s ease-in-out infinite;
+}
+
+.hero-ui-block {
+  animation: heroFloat2 5.8s ease-in-out 0.4s infinite;
+}
+
+/* Pause float on hover so user can inspect */
+.hero-palette-card:hover,
+.hero-ui-block:hover {
+  animation-play-state: paused;
+}
+
+/* --------------------------------------------------------------------------
+   10. SECTION LABELS — Subtle entrance indicator
+   -------------------------------------------------------------------------- */
+
+.section-label {
+  opacity: 0.8;
+  letter-spacing: 0.1em;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.section-label:hover {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   11. TESTIMONIAL — Subtle quote pulse
+   -------------------------------------------------------------------------- */
+
+.testimonial-card::before {
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.testimonial-card:hover::before {
+  opacity: 0.1;
+}
+
+/* --------------------------------------------------------------------------
+   12. STEP CARDS — Number accent reveal
+   -------------------------------------------------------------------------- */
+
+.step-card {
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+}
+
+.step-card:hover .step-number {
+  opacity: 0.12;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+/* --------------------------------------------------------------------------
+   13. FOOTER LINK HOVER — Slide right
+   -------------------------------------------------------------------------- */
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    gap var(--dur-fast) var(--ease-spring);
+}
+
+.footer-links a:hover {
+  gap: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   14. PRICING CARD — Popular badge glow pulse
+   -------------------------------------------------------------------------- */
+
+@keyframes subtlePulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(124, 58, 237, 0),
+      var(--shadow-hover);
+  }
+  50% {
+    box-shadow:
+      0 0 0 4px rgba(124, 58, 237, 0.08),
+      var(--shadow-hover);
+  }
+}
+
+.pricing-card.popular {
+  animation: subtlePulse 3s var(--ease-in-out) infinite;
+}
+
+.pricing-card.popular:hover {
+  animation: none;
+}
+
+/* --------------------------------------------------------------------------
+   15. SCROLL PROGRESS BAR — Top edge indicator
+   -------------------------------------------------------------------------- */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-pink));
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 200;
+  transition: transform 60ms linear;
+  pointer-events: none;
+}
+
+[dir="rtl"] .scroll-progress {
+  transform-origin: right;
+}
+
+/* --------------------------------------------------------------------------
+   16. BACK TO TOP BUTTON
+   -------------------------------------------------------------------------- */
+
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-text);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(12px) scale(0.9);
+  transition:
+    opacity var(--dur-fast) var(--ease-out),
+    transform var(--dur-base) var(--ease-spring);
+  z-index: 150;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.back-to-top:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top:active {
+  transform: scale(0.95);
+}
+
+/* --------------------------------------------------------------------------
+   17. MOBILE RESPONSIVENESS
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    border-radius: var(--radius-sm);
+    transition: background var(--dur-fast) var(--ease-out);
+  }
+
+  .nav-hamburger:hover {
+    background: var(--color-bg-alt);
+  }
+}
+
+@media (min-width: 992px) {
+  .nav-hamburger {
+    display: none !important;
+  }
+  .mobile-nav {
+    display: none !important;
+  }
+}

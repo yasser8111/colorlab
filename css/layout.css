@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Layout Architecture
+   ========================================================================== */
+
+/* Universal Container */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Flex Utilities */
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* CSS Grid Engine */
+.grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-3 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+    .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Sections */
+.section-spacing {
+    padding: 7rem 0;
+}
+
+.section-spacing-sm {
+    padding: 4rem 0;
+}
+
+.section-divider {
+    border-top: 1px solid var(--color-border);
+}
+
+/* Split Layout (50/50 side by side) */
+.split-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .split-layout {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .split-text, .split-image {
+        flex: 1;
+    }
+    
+    .split-image {
+        max-width: 50%;
+    }
+}
+
+/*
+ * TOOL LAYOUT (Generator App Specific)
+ * Using CSS Grid for the sidebar/main paradigm
+ */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    padding-inline-start: 0;
+    transition: padding-inline-start 0.3s ease;
+}
+
+.sidebar {
+    background-color: var(--color-bg-alt);
+    border-inline-end: 1px solid var(--color-border);
+    padding: 2rem;
+    position: fixed;
+    top: 0;
+    inset-inline-start: 0;
+    width: 320px;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+/* RTL / LTR specific off-screen transforms */
+[dir="ltr"] .sidebar { transform: translateX(-100%); }
+[dir="rtl"] .sidebar { transform: translateX(100%); }
+
+.sidebar.open {
+    transform: translateX(0) !important;
+}
+
+.app-layout.sidebar-open {
+    padding-inline-start: 320px;
+}
+
+.main-content {
+    padding: 2rem;
+    background-color: var(--color-bg);
+    flex: 1;
+    min-width: 0; /* allows grid to shrink properly */
+}
+
+/* Sidebar close button for mobile or general use */
+.sidebar-close {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}

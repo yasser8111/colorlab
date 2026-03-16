@@ -1,0 +1,1334 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>كولور لاب — مولد ألوان احترافي للمطورين والمصممين</title>
+    <meta
+      name="description"
+      content="قم بتوليد أنظمة ألوان كاملة ومحسنة لمواقع الويب فوراً. جميلة، دلالية، ومصممة للمطورين والمصممين. ابدأ مجاناً."
+    />
+    <meta name="theme-color" content="#7C3AED" />
+
+    <!-- Preconnect for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Architecture -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/polish.css" />
+    <link rel="stylesheet" href="css/motion.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body class="marketing-page">
+    <!-- SVG Icon Sprite (hidden) -->
+    <div style="display: none" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <symbol
+          id="icon-zap"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </symbol>
+        <symbol
+          id="icon-eye"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+          <circle cx="12" cy="12" r="3" />
+        </symbol>
+        <symbol
+          id="icon-sliders"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="4" y1="21" x2="4" y2="14" />
+          <line x1="4" y1="10" x2="4" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="12" />
+          <line x1="12" y1="8" x2="12" y2="3" />
+          <line x1="20" y1="21" x2="20" y2="16" />
+          <line x1="20" y1="12" x2="20" y2="3" />
+          <line x1="1" y1="14" x2="7" y2="14" />
+          <line x1="9" y1="8" x2="15" y2="8" />
+          <line x1="17" y1="16" x2="23" y2="16" />
+        </symbol>
+        <symbol
+          id="icon-layers"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polygon points="12 2 2 7 12 12 22 7 12 2" />
+          <polyline points="2 17 12 22 22 17" />
+          <polyline points="2 12 12 17 22 12" />
+        </symbol>
+        <symbol
+          id="icon-code"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </symbol>
+        <symbol
+          id="icon-copy"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+        </symbol>
+        <symbol
+          id="icon-save"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+          />
+          <polyline points="17 21 17 13 7 13 7 21" />
+          <polyline points="7 3 7 8 15 8" />
+        </symbol>
+        <symbol
+          id="icon-check"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="20 6 9 17 4 12" />
+        </symbol>
+        <symbol
+          id="icon-arrow-right"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </symbol>
+        <symbol
+          id="icon-chevron-down"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </symbol>
+        <symbol
+          id="icon-mail"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+          />
+          <polyline points="22,6 12,13 2,6" />
+        </symbol>
+        <symbol
+          id="icon-phone"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.6 4.38 2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.65-.65a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+          />
+        </symbol>
+        <symbol
+          id="icon-map-pin"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </symbol>
+        <symbol
+          id="icon-send"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="22" y1="2" x2="11" y2="13" />
+          <polygon points="22 2 15 22 11 13 2 9 22 2" />
+        </symbol>
+        <symbol
+          id="icon-users"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </symbol>
+        <symbol
+          id="icon-star"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          stroke="currentColor"
+          stroke-width="1"
+        >
+          <polygon
+            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+          />
+        </symbol>
+        <symbol
+          id="icon-palette"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="13.5" cy="6.5" r="0.5" fill="currentColor" />
+          <circle cx="17.5" cy="10.5" r="0.5" fill="currentColor" />
+          <circle cx="8.5" cy="7.5" r="0.5" fill="currentColor" />
+          <circle cx="6.5" cy="12.5" r="0.5" fill="currentColor" />
+          <path
+            d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"
+          />
+        </symbol>
+      </svg>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="العودة للأعلى">
+      <svg
+        class="icon icon-sm"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
+    </button>
+
+    <!-- =====================================================================
+         NAVIGATION
+         ===================================================================== -->
+    <nav
+      class="navbar"
+      id="navbar"
+      role="navigation"
+      aria-label="التنقل الرئيسي"
+    >
+      <div class="container nav-content">
+        <div class="logo">
+          <a href="index.html" aria-label="الرئيسية">
+            <img src="icons/logo.svg" alt="كولور لاب" height="24" />
+          </a>
+        </div>
+
+        <!-- Desktop Nav Links -->
+        <div class="nav-links">
+          <a href="#services" class="nav-link">خدماتنا</a>
+          <a href="#features" class="nav-link">المميزات</a>
+          <a href="#pricing" class="nav-link">الأسعار</a>
+          <a href="#faq" class="nav-link">الأسئلة الشائعة</a>
+          <a href="html/tool.html" class="nav-link">المولد</a>
+          <a href="html/login.html" class="btn btn-primary btn-sm">دخول</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button
+          class="nav-hamburger"
+          id="nav-hamburger"
+          aria-label="فتح القائمة"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div
+      class="mobile-nav"
+      id="mobile-nav"
+      aria-hidden="true"
+      role="dialog"
+      aria-label="القائمة المتنقلة"
+    >
+      <a href="#services" class="nav-link">خدماتنا</a>
+      <a href="#features" class="nav-link">المميزات</a>
+      <a href="#pricing" class="nav-link">الأسعار</a>
+      <a href="#faq" class="nav-link">الأسئلة الشائعة</a>
+      <a href="html/tool.html" class="nav-link">المولد</a>
+      <a href="html/login.html" class="btn btn-primary btn-sm mobile-nav-btn"
+        >دخول</a
+      >
+    </div>
+
+    <main>
+      <!-- =================================================================
+             HERO SECTION
+             ================================================================= -->
+      <section
+        class="hero section-spacing"
+        id="hero-preview"
+        style="
+          --preview-primary: #7c3aed;
+          --preview-secondary: #2563eb;
+          --preview-accent: #06b6d4;
+          --preview-surface: #ffffff;
+          --preview-bg: #f8fafc;
+          --preview-text-pri: #0f172a;
+          --preview-text-sec: #64748b;
+          --preview-card: #ffffff;
+          --preview-border: #e2e8f0;
+        "
+      >
+        <div class="container">
+          <div class="split-layout hero-split">
+            <!-- Left: Text and Actions -->
+            <div class="split-text text-left hero-text-col">
+              <span class="badge"> ميزة جديدة </span>
+
+              <h1 class="hero-title mt-4">ألوان تبني<br />مواقع أفضل.</h1>
+
+              <p class="hero-subtitle">
+                توقف عن التخمين في أنظمة الألوان الخاصة بك. قم بتوليد لوحات
+                ألوان كاملة ومحسنة لواجهة المستخدم والعلامات التجارية والوضع
+                الليلي فوراً.
+              </p>
+
+              <div class="hero-actions">
+                <a
+                  href="html/tool.html"
+                  class="hero-cta-btn"
+                  id="hero-cta-main"
+                >
+                  ابدأ التوليد
+                  <svg class="icon icon-sm">
+                    <use href="#icon-arrow-right"></use>
+                  </svg>
+                </a>
+                <a href="#features" class="btn btn-secondary btn-lg"
+                  >عرض المميزات</a
+                >
+              </div>
+
+              <!-- Interactive Color Picker -->
+              <div class="hero-interactive">
+                <p class="hero-interactive-label">
+                  جربه الآن — اختر لوناً أساسياً للتجربة:
+                </p>
+                <div
+                  class="hero-color-picker"
+                  id="hero-color-picker"
+                  role="group"
+                  aria-label="معاينة لوحة الألوان"
+                >
+                  <button
+                    class="color-btn"
+                    data-color="#1A56FF"
+                    aria-label="اللوحة الزرقاء"
+                    style="background-color: #1a56ff"
+                  ></button>
+                  <button
+                    class="color-btn"
+                    data-color="#10B981"
+                    aria-label="اللوحة الخضراء"
+                    style="background-color: #10b981"
+                  ></button>
+                  <button
+                    class="color-btn"
+                    data-color="#F59E0B"
+                    aria-label="اللوحة الصفراء"
+                    style="background-color: #f59e0b"
+                  ></button>
+                  <button
+                    class="color-btn"
+                    data-color="#8B5CF6"
+                    aria-label="اللوحة البنفسجية"
+                    style="background-color: #8b5cf6"
+                  ></button>
+                  <button
+                    class="color-btn"
+                    data-color="#EC4899"
+                    aria-label="اللوحة الوردية"
+                    style="background-color: #ec4899"
+                  ></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Floating Visual Cards -->
+            <div class="split-image hero-visuals" aria-hidden="true">
+              <!-- Ambient glow -->
+              <div class="hero-glow"></div>
+
+              <!-- Decorative dot grid -->
+              <div class="hero-dots"></div>
+
+              <!-- Primary palette card -->
+              <div class="hero-palette-card">
+                <div class="hero-card-header">
+                  <div class="hero-card-dots">
+                    <div
+                      class="hero-card-dot"
+                      style="background-color: var(--preview-primary)"
+                    ></div>
+                    <div
+                      class="hero-card-dot"
+                      style="background-color: var(--preview-secondary)"
+                    ></div>
+                    <div
+                      class="hero-card-dot"
+                      style="background-color: var(--preview-accent)"
+                    ></div>
+                  </div>
+                  <span class="hero-card-label">نظام الألوان</span>
+                </div>
+
+                <div class="hero-swatch-primary">
+                  <span class="hero-swatch-label">رئيسي</span>
+                </div>
+
+                <div class="hero-swatch-row">
+                  <div class="hero-swatch-secondary">
+                    <span class="hero-swatch-label-sm">ثانوي</span>
+                  </div>
+                  <div class="hero-swatch-accent">
+                    <span class="hero-swatch-label-sm">مميز</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Secondary UI block fragment -->
+              <div class="hero-ui-block">
+                <div class="hero-ui-block-line"></div>
+                <div class="hero-ui-block-placeholder"></div>
+                <div class="hero-ui-block-actions">
+                  <div class="hero-ui-input"></div>
+                  <div class="hero-ui-btn"></div>
+                </div>
+              </div>
+
+              <!-- Floating notification chip -->
+              <div class="hero-chip">
+                <span class="hero-chip-dot"></span>
+                واجهة ذكية
+              </div>
+            </div>
+            <!-- /hero-visuals -->
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             SERVICES SECTION
+             ================================================================= -->
+      <section
+        id="services"
+        class="services bg-alt section-spacing section-divider"
+      >
+        <div class="container text-center">
+          <span class="section-label">ما نقدمه</span>
+          <h2 class="section-title">استراتيجية نظام ألوان للفرق العصرية</h2>
+          <p class="section-subtitle">
+            نتعدى مجرد العينات لنقدم سير عمل كامل للهندسة التصميمية.
+          </p>
+
+          <div class="grid grid-3">
+            <div class="service-card card reveal">
+              <div class="icon-box accent">
+                <svg class="icon icon-lg"><use href="#icon-palette"></use></svg>
+              </div>
+              <h3>أنظمة واجهة مستخدم كاملة</h3>
+              <p>
+                قم بتوليد ألوان رئيسية وثانوية ومميزة مع خلفيات وحدود متطابقة
+                تماماً — جاهزة للإنتاج.
+              </p>
+            </div>
+            <div class="service-card card reveal reveal-delay-1">
+              <div class="icon-box accent">
+                <svg class="icon icon-lg"><use href="#icon-layers"></use></svg>
+              </div>
+              <h3>تناسق بصري</h3>
+              <p>
+                حافظ على تناغم العلامة التجارية عبر عدة مشاريع باستخدام منطق
+                علاقة الألوان الرياضي وخريطة الرموز الدلالية.
+              </p>
+            </div>
+            <div class="service-card card reveal reveal-delay-2">
+              <div class="icon-box accent">
+                <svg class="icon icon-lg"><use href="#icon-code"></use></svg>
+              </div>
+              <h3>سير عمل أمامي</h3>
+              <p>
+                قم بتصدير متغيرات CSS وجاهزة للاستخدام وإعدادات Tailwind لتسريع
+                خط أنابيب التطوير الخاص بك فوراً.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             FEATURES SECTION
+             ================================================================= -->
+      <section
+        id="features"
+        class="features bg-primary section-spacing section-divider"
+      >
+        <div class="container text-center">
+          <span class="section-label">القدرات</span>
+          <h2 class="section-title">كل ما تحتاجه للإطلاق بسرعة</h2>
+          <p class="section-subtitle">
+            مجموعة أدوات احترافية للمصممين والمطورين الذين يهتمون بالتفاصيل.
+          </p>
+
+          <div class="grid grid-3">
+            <div class="feature-card card reveal">
+              <div class="icon-box">
+                <svg class="icon icon-lg"><use href="#icon-zap"></use></svg>
+              </div>
+              <h3>10 لوحات مولدة</h3>
+              <p>
+                احصل على مجموعة متنوعة من الخيارات من لونك الأساسي — من أحادي
+                اللون إلى أنظمة التباين العالية.
+              </p>
+            </div>
+            <div class="feature-card card reveal reveal-delay-1">
+              <div class="icon-box">
+                <svg class="icon icon-lg"><use href="#icon-eye"></use></svg>
+              </div>
+              <h3>معاينة واجهة مباشرة</h3>
+              <p>
+                شاهد ألوانك مطبقة على عينات حقيقية: لوحات تحكم، صفحات هبوط،
+                وأجزاء من تطبيقات الجوال.
+              </p>
+            </div>
+            <div class="feature-card card reveal reveal-delay-2">
+              <div class="icon-box">
+                <svg class="icon icon-lg"><use href="#icon-sliders"></use></svg>
+              </div>
+              <h3>أدوار واجهة دلالية</h3>
+              <p>
+                رسم خرائط تلقائي للألوان للأدوار الوظيفية مثل السطح، الحدود،
+                النص الأساسي، والمزيد.
+              </p>
+            </div>
+            <div class="feature-card card reveal">
+              <div class="icon-box">
+                <svg class="icon icon-lg"><use href="#icon-layers"></use></svg>
+              </div>
+              <h3>مراعات التباين</h3>
+              <p>
+                فحص مدمج لسهولة الوصول يضمن بقاء النص مقروءاً على جميع الخلفيات
+                المولدة.
+              </p>
+            </div>
+            <div class="feature-card card reveal reveal-delay-1">
+              <div class="icon-box">
+                <svg class="icon icon-lg"><use href="#icon-copy"></use></svg>
+              </div>
+              <h3>نسخ بنقرة واحدة</h3>
+              <p>
+                احصل على أكواد hex الفردية أو كتل متغيرات CSS الكاملة لورقة
+                الأنماط الخاصة بك بنقرة واحدة.
+              </p>
+            </div>
+            <div class="feature-card card reveal reveal-delay-2">
+              <div class="icon-box">
+                <svg class="icon icon-lg"><use href="#icon-save"></use></svg>
+              </div>
+              <h3>لوحات محفوظة</h3>
+              <p>
+                يتم تخزين أجيالك المفضلة محلياً في متصفحك للرجوع إليها عبر
+                الجلسات.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             HOW IT WORKS SECTION
+             ================================================================= -->
+      <section
+        id="how-it-works"
+        class="how-it-works bg-alt section-spacing section-divider"
+      >
+        <div class="container text-center">
+          <span class="section-label">طريقة العمل</span>
+          <h2 class="section-title">ثلاث خطوات نحو الكمال</h2>
+          <p class="section-subtitle">
+            عملية بسيطة وفعالة للانتقال من لون واحد إلى نظام كامل.
+          </p>
+
+          <div class="steps-wrapper mt-12">
+            <!-- Step 01 -->
+            <div class="step-card reveal">
+              <div class="step-icon-wrap">
+                <div class="step-icon-box">
+                  <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </div>
+                <span class="step-badge">01</span>
+              </div>
+              <h4>اختر اللون</h4>
+              <p class="text-muted">ابدأ بلون علامتك التجارية أو اختر واحداً من منتقي الألوان الذكي لدينا.</p>
+            </div>
+
+            <!-- Arrow Connector -->
+            <div class="step-connector" aria-hidden="true">
+              <svg viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="12" x2="48" y2="12" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/><polyline points="40,6 50,12 40,18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </div>
+
+            <!-- Step 02 -->
+            <div class="step-card reveal reveal-delay-1">
+              <div class="step-icon-wrap">
+                <div class="step-icon-box">
+                  <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+                </div>
+                <span class="step-badge">02</span>
+              </div>
+              <h4>خصّصه</h4>
+              <p class="text-muted">اضبط التباين والتشبع واحصل على 10 لوحات مختلفة مولدة حسابياً.</p>
+            </div>
+
+            <!-- Arrow Connector -->
+            <div class="step-connector" aria-hidden="true">
+              <svg viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="12" x2="48" y2="12" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/><polyline points="40,6 50,12 40,18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </div>
+
+            <!-- Step 03 -->
+            <div class="step-card reveal reveal-delay-2">
+              <div class="step-icon-wrap">
+                <div class="step-icon-box">
+                  <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </div>
+                <span class="step-badge">03</span>
+              </div>
+              <h4>صدّره</h4>
+              <p class="text-muted">انسخ متغيرات CSS أو JSON أو إعدادات Tailwind واستخدمها في مشروعك فوراً.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             OFFERS / CTA SECTION
+             ================================================================= -->
+      <section class="offers section-spacing">
+        <div class="container">
+          <div class="offers-card reveal">
+            <h2 class="section-title text-center">
+              هل أنت مستعد لتحويل واجهاتك؟
+            </h2>
+            <p class="section-subtitle text-center mt-4">
+              انضم إلى أكثر من 5,000 مطور يصممون منتجات أفضل مع كولور لاب.
+            </p>
+            <div class="text-center mt-8">
+              <a href="html/tool.html" class="btn btn-primary btn-lg"
+                >ابدأ الآن مجاناً</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             PRICING SECTION
+             ================================================================= -->
+      <section
+        id="pricing"
+        class="pricing bg-primary section-spacing section-divider"
+      >
+        <div class="container text-center">
+          <span class="section-label">الخطط</span>
+          <h2 class="section-title">أسعار تناسب الجميع</h2>
+          <p class="section-subtitle">
+            اختر الخطة التي تناسب حجم فريقك وطموحاتك.
+          </p>
+
+          <div class="pricing-grid">
+            <!-- Starter -->
+            <div class="pricing-card reveal">
+              <div class="pricing-header">
+                <h3>الأساسي</h3>
+                <p>للمشاريع الكبيرة و الشركات.</p>
+              </div>
+              <div class="pricing-price">
+                <sup>$</sup>0<span>/للأبد</span>
+              </div>
+              <hr class="pricing-divider" />
+              <ul class="pricing-features">
+                <li>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  لوحات غير محدودة
+                </li>
+                <li>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  تصدير CSS
+                </li>
+                <li>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  حفظ حتى 5 لوحات
+                </li>
+                <li>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  معاينة واجهة أساسية
+                </li>
+              </ul>
+              <a href="html/tool.html" class="btn btn-secondary w-100">ابدأ الآن</a>
+            </div>
+
+            <!-- Pro (Popular) -->
+            <div class="pricing-card popular reveal reveal-delay-1">
+              <div class="pricing-header">
+                <h3>المحترف</h3>
+                <p>للمصممين المحترفين الذين يبحثون عن الكمال.</p>
+              </div>
+              <div class="pricing-price">
+                <sup>$</sup>12<span>/شهر</span>
+              </div>
+              <hr class="pricing-divider" />
+              <ul class="pricing-features">
+                <li>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  كل ما في الأساسي
+                </li>
+                <li>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  تصدير Tailwind &amp; JSON
+                </li>
+                <li>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  حفظ لوحات غير محدود
+                </li>
+                <li>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  معاينات واجهة متقدمة
+                </li>
+                <li>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  دعم ذو أولوية
+                </li>
+              </ul>
+              <a href="html/login.html" class="btn btn-accent w-100">اشترك الآن</a>
+            </div>
+
+            <!-- Team -->
+            <div class="pricing-card reveal reveal-delay-2">
+              <div class="pricing-header">
+                <h3>الفريق</h3>
+                <p>لفرق التصميم والوكالات الإبداعية.</p>
+              </div>
+              <div class="pricing-price">
+                <sup>$</sup>49<span>/شهر</span>
+              </div>
+              <hr class="pricing-divider" />
+              <ul class="pricing-features">
+                <li>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  كل ما في المحترف
+                </li>
+                <li>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  مكتبات مشتركة
+                </li>
+                <li>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  أدوات تعاون الفريق
+                </li>
+                <li>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  تصدير لـ Figma
+                </li>
+              </ul>
+              <a href="html/login.html" class="btn btn-secondary w-100">تواصل معنا</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             TESTIMONIALS SECTION
+             ================================================================= -->
+      <section
+        id="testimonials"
+        class="testimonials bg-alt section-spacing section-divider"
+      >
+        <div class="container text-center">
+          <span class="section-label">قصص النجاح</span>
+          <h2 class="section-title">محبوب من قبل المصممين</h2>
+          <p class="section-subtitle">
+            انظر ماذا يقول مجتمعنا المتنامي عن الأداة.
+          </p>
+
+          <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-content">
+                "لقد غير كولور لاب تماماً كيفية تعاملي مع جلسات التصميم الأولية.
+                أستطيع الآن قفل نظام ألوان احترافي في دقائق بدلاً من ساعات."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Sarah+Chen&background=dbeafe&color=1d4ed8&bold=true"
+                    alt="سارة شين"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="author-info">
+                  <h5>سارة شين</h5>
+                  <p>مصممة منتجات أولى في لاينر</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card reveal reveal-delay-1">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-content">
+                "الأدوار الدلالية للواجهة غيرت قواعد اللعبة. القدرة على نسخ
+                متغيرات CSS مباشرة إلى مشروعي وفرت علي الكثير من الوقت."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Marcus+Rodriguez&background=ede9fe&color=7c3aed&bold=true"
+                    alt="ماركوس رودريغيز"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="author-info">
+                  <h5>ماركوس رودريغيز</h5>
+                  <p>مهندس معماري للواجهات الأمامية في فيرسل</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card reveal reveal-delay-2">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-content">
+                "ميزة المعاينة الحية وحدها تستحق العناء. رؤية لوحة الألوان مطبقة
+                على أجزاء ثنائية حقيقية قبل التصدير هو شيء يجب أن تتوفر عليه كل
+                أداة تصميم."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Priya+Kapoor&background=fce7f3&color=be185d&bold=true"
+                    alt="بريا كابور"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="author-info">
+                  <h5>بريا كابور</h5>
+                  <p>رئيسة التصميم في مجتمع فيجما</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             ABOUT SECTION
+             ================================================================= -->
+      <section
+        id="about"
+        class="about bg-primary section-spacing section-divider"
+      >
+        <div class="container">
+          <div class="split-layout">
+            <div class="split-text">
+              <span class="section-label">مهمتنا</span>
+              <h2 class="section-title">عن المنصة</h2>
+              <p class="mt-6">
+                تم إنشاء كولور لاب بمهمة بسيطة: سد الفجوة بين نظرية الألوان
+                المجردة والتنفيذ العملي للتصميم. لاحظنا أن العديد من المطورين
+                يكافحون لبناء أنظمة ألوان متماسكة، مما يؤدي غالباً إلى واجهات
+                مستخدم غير متسقة.
+              </p>
+              <p class="mt-4">
+                تستخدم أداتنا خوارزميات مختبرة لتوليد مجموعات لا تبدو جيدة معاً
+                فحسب — بل تعمل معاً وظيفياً. سواء كنت تبني لوحة تحكم سريعة أو
+                موقع تسويق حيوياً، يوفر كولور لاب الأساس الرياضي لهويتك البصرية.
+              </p>
+              <div class="hero-actions mt-8">
+                <a href="html/tool.html" class="btn btn-primary">
+                  جرب المولد
+                  <svg class="icon icon-sm">
+                    <use href="#icon-arrow-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- About visual: mini palette showcase -->
+            <div class="split-image about-visual card">
+              <div class="about-visual-inner">
+                <p class="about-visual-label">عينات من لوحات الألوان المولدة</p>
+                <div class="about-palette-row">
+                  <div
+                    class="about-swatch"
+                    style="background: #7c3aed"
+                    title="النظام البنفسجي"
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #3b82f6"
+                    title=""
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #93c5fd"
+                    title=""
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #dbeafe"
+                    title=""
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #eff6ff"
+                    title=""
+                  ></div>
+                </div>
+                <div class="about-palette-row">
+                  <div
+                    class="about-swatch"
+                    style="background: #10b981"
+                    title="النظام الأخضر"
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #34d399"
+                    title=""
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #6ee7b7"
+                    title=""
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #a7f3d0"
+                    title=""
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #d1fae5"
+                    title=""
+                  ></div>
+                </div>
+                <div class="about-palette-row">
+                  <div
+                    class="about-swatch"
+                    style="background: #8b5cf6"
+                    title="النظام البنفسجي"
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #a78bfa"
+                    title=""
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #c4b5fd"
+                    title=""
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #ddd6fe"
+                    title=""
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #ede9fe"
+                    title=""
+                  ></div>
+                </div>
+                <div class="about-palette-row">
+                  <div
+                    class="about-swatch"
+                    style="background: #f59e0b"
+                    title="النظام الأصفر"
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #fbbf24"
+                    title=""
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #fcd34d"
+                    title=""
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #fde68a"
+                    title=""
+                  ></div>
+                  <div
+                    class="about-swatch"
+                    style="background: #fef3c7"
+                    title=""
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             CONTACT SECTION
+             ================================================================= -->
+      <section
+        id="contact"
+        class="contact bg-alt section-spacing section-divider"
+      >
+        <div class="container">
+          <div class="text-center mb-12">
+            <span class="section-label">تواصل معنا</span>
+            <h2 class="section-title">قل مرحباً</h2>
+            <p class="section-subtitle">
+              لديك أسئلة أو ملاحظات؟ نحن هنا لمساعدتك في بناء واجهات أفضل.
+            </p>
+          </div>
+
+          <div class="contact-wrapper">
+            <!-- Contact Info -->
+            <div class="contact-info">
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg class="icon icon-md"><use href="#icon-mail"></use></svg>
+                </div>
+                <div class="info-text">
+                  <h5>راسلنا</h5>
+                  <p>support@colorlab.design</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg class="icon icon-md"><use href="#icon-phone"></use></svg>
+                </div>
+                <div class="info-text">
+                  <h5>اتصل بنا</h5>
+                  <p>+1 (555) 000-0000</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg class="icon icon-md">
+                    <use href="#icon-map-pin"></use>
+                  </svg>
+                </div>
+                <div class="info-text">
+                  <h5>المكتب الرئيسي</h5>
+                  <p>شارع التصميم، وادي الإبداع، كاليفورنيا</p>
+                </div>
+              </div>
+
+              <div
+                class="map-placeholder"
+                id="map-placeholder"
+                role="button"
+                tabindex="0"
+                aria-label="اضغط لتحميل الخريطة"
+              ></div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form card">
+              <form action="#" novalidate>
+                <div class="form-group">
+                  <label class="form-label" for="contact-name"
+                    >الاسم الكامل</label
+                  >
+                  <input
+                    id="contact-name"
+                    type="text"
+                    class="form-control"
+                    placeholder="فلان الفلاني"
+                    autocomplete="name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-email"
+                    >البريد الإلكتروني</label
+                  >
+                  <input
+                    id="contact-email"
+                    type="email"
+                    class="form-control"
+                    placeholder="name@example.com"
+                    autocomplete="email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-subject"
+                    >الموضوع</label
+                  >
+                  <input
+                    id="contact-subject"
+                    type="text"
+                    class="form-control"
+                    placeholder="كيف يمكننا مساعدتك؟"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-message"
+                    >الرسالة</label
+                  >
+                  <textarea
+                    id="contact-message"
+                    class="form-control"
+                    placeholder="أخبرنا المزيد عن احتياجاتك..."
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  id="contact-submit"
+                  class="btn btn-primary w-100 btn-lg"
+                >
+                  <svg class="icon icon-sm"><use href="#icon-send"></use></svg>
+                  إرسال الرسالة
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             FAQ SECTION
+             ================================================================= -->
+      <section id="faq" class="faq bg-primary section-spacing section-divider">
+        <div class="container">
+          <div class="text-center">
+            <span class="section-label">لديك أسئلة؟</span>
+            <h2 class="section-title">الأسئلة الشائعة</h2>
+            <p class="section-subtitle">
+              إجابة سريعة للأسئلة الأكثر شيوعاً حول كولور لاب.
+            </p>
+          </div>
+
+          <div class="faq-accordion">
+            <div class="faq-card">
+              <div class="faq-header">
+                <h4>هل كولور لاب مجاني للاستخدام؟</h4>
+                <svg class="faq-chevron icon">
+                  <use href="#icon-chevron-down"></use>
+                </svg>
+              </div>
+              <div class="faq-content-wrapper">
+                <div class="faq-content-inner">
+                  <p>
+                    نعم، مولدنا الأساسي مجاني تماماً. يمكنك توليد ومعاينة ونسخ
+                    الألوان لكل من المشاريع الشخصية والتجارية دون أي تكلفة أو
+                    حاجة لإنشاء حساب.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-card">
+              <div class="faq-header">
+                <h4>هل يمكنني استخدام لوحات الألوان في المشاريع التجارية؟</h4>
+                <svg class="faq-chevron icon">
+                  <use href="#icon-chevron-down"></use>
+                </svg>
+              </div>
+              <div class="faq-content-wrapper">
+                <div class="faq-content-inner">
+                  <p>
+                    بالتأكيد. الألوان نفسها لا يمكن حمايتها بحقوق النشر. أي لوحة
+                    تولدها باستخدام كولور لاب هي ملكك لاستخدامها في أي مشروع،
+                    تجاري أو غير ذلك، دون الحاجة لذكر المصدر.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-card">
+              <div class="faq-header">
+                <h4>هل يدعم كولور لاب أنماطاً مختلفة من المواقع؟</h4>
+                <svg class="faq-chevron icon">
+                  <use href="#icon-chevron-down"></use>
+                </svg>
+              </div>
+              <div class="faq-content-wrapper">
+                <div class="faq-content-inner">
+                  <p>
+                    نعم! لدينا ملفات تعريف خوارزمية محددة لأنماط SaaS، والمتجر
+                    (التجارة الإلكترونية)، والبورتفوليو — مع تعديل نسب التشبع
+                    والتباين وفقاً لكل حالة استخدام.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-card">
+              <div class="faq-header">
+                <h4>هل يمكنني حفظ لوحاتي المفضلة؟</h4>
+                <svg class="faq-chevron icon">
+                  <use href="#icon-chevron-down"></use>
+                </svg>
+              </div>
+              <div class="faq-content-wrapper">
+                <div class="faq-content-inner">
+                  <p>
+                    تستخدم أداتنا التخزين المحلي لمتصفحك لحفظ زملائك المفضلين.
+                    تبقى بياناتك على جهازك وتكون متاحة متى ما عدت إلى الموقع —
+                    لا يلزم وجود حساب في الخطة المجانية.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-card">
+              <div class="faq-header">
+                <h4>كيف تعمل خوارزمية توليد الألوان؟</h4>
+                <svg class="faq-chevron icon">
+                  <use href="#icon-chevron-down"></use>
+                </svg>
+              </div>
+              <div class="faq-content-wrapper">
+                <div class="faq-content-inner">
+                  <p>
+                    يستخدم كولور لاب نماذج نظرية الألوان مثل تدوير HSL، والتناغم
+                    المكمل، وقياس الإضاءة الإدراكي لاشتقاق نظام ألوان UI كامل من
+                    لونك الأساسي. يتم التحقق من كل لوحة مقابل معايير تباين
+                    إمكانية الوصول WCAG.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =======================================================================
+         FOOTER
+         ======================================================================= -->
+    <footer class="footer pt-12 pb-12" role="contentinfo">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-col footer-brand">
+            <div class="logo mb-4">
+              <img src="icons/logo.svg" alt="كولور لاب" height="22" />
+            </div>
+            <p class="text-muted text-sm">
+              تمكين المصممين والمطورين بأنظمة ألوان رياضية منذ عام 2026. تم
+              بناؤه بدقة وعناية.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h5>المنتج</h5>
+            <ul class="footer-links">
+              <li><a href="html/tool.html">المولد</a></li>
+              <li><a href="#features">المميزات</a></li>
+              <li><a href="#pricing">الأسعار</a></li>
+              <li><a href="html/login.html">دخول</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>الموارد</h5>
+            <ul class="footer-links">
+              <li><a href="#faq">الأسئلة الشائعة</a></li>
+              <li><a href="#how-it-works">كيف يعمل</a></li>
+              <li><a href="html/privacy.html">سياسة الخصوصية</a></li>
+              <li><a href="html/terms.html">الشروط والأحكام</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>الشركة</h5>
+            <ul class="footer-links">
+              <li><a href="#about">عنا</a></li>
+              <li><a href="#contact">تواصل معنا</a></li>
+              <li><a href="#">النشرة الإخبارية</a></li>
+              <li><a href="#">تويتر</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="text-sm text-muted">
+            &copy; 2026 كولور لاب. جميع الحقوق محفوظة.
+          </p>
+          <div class="footer-bottom-links">
+            <a href="html/privacy.html" class="text-sm text-muted">الخصوصية</a>
+            <a href="html/terms.html" class="text-sm text-muted">الشروط</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/generator.js"></script>
+    <script src="js/interactions.js"></script>
+  </body>
+</html>
