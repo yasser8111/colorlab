@@ -1,66 +1,92 @@
 :root {
-/* ==========================================================================
-   Base CSS & Variables — ColorLab Design System
-   Inspired by Stripe, Linear, Vercel aesthetics.
-   ========================================================================== */
+  /* ==========================================================================
+     Base CSS & Variables — ColorLab Pro Design System
+     Senior UI/UX Strategy: Minimal, Professional, Developer-focused.
+     ========================================================================== */
 
-  /* Brand Colors (Updated based on Logo Identity) */
-  --color-primary: #111111;
-  --color-primary-hover: #212121;
-  
-  /* Primary Brand Accent (the vibrant purple from logo) */
-  --color-accent: #7C3AED;
-  --color-accent-hover: #6D28D9;
+  /* 1. Brand & Identity Colors */
+  --brand-primary: #111111;
+  --brand-accent: #7C3AED;      /* Vibrant Purple */
+  --brand-accent-soft: rgba(124, 58, 237, 0.1);
+  --brand-blue: #2563EB;
+  --brand-cyan: #06B6D4;
+  --brand-pink: #DB2777;
+  --brand-yellow: #EAB308;
 
-  /* Additional Identity Colors (from logo palette) */
-  --color-blue: #2563EB;
-  --color-cyan: #06B6D4;
-  --color-pink: #DB2777;
-  --color-yellow: #EAB308;
+  /* 2. Neutral Palette (Modern Layers & Borders) */
+  --bg-main: #FFFFFF;
+  --bg-muted: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-interactive: #F1F5F9;
 
-  /* Hero CTA button uses the purple brand color */
-  --color-hero-cta: #7C3AED;
-  --color-hero-cta-hover: #6D28D9;
+  /* Unified Border System */
+  --border-width: 1px;
+  --border-main: #E2E8F0;
+  --border-subtle: rgba(0, 0, 0, 0.05);
+  --border-hover: rgba(124, 58, 237, 0.2);
+  --border-interactive: var(--brand-accent);
+  --border-focus: rgba(124, 58, 237, 0.4);
 
-  /* Neutral & Backgrounds */
-  --color-bg: #ffffff;
-  --color-bg-alt: #f9fafb;
-  --color-surface: #ffffff;
+  /* 3. Typography Colors */
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+  --text-inverse: #FFFFFF;
 
-  /* Typography Colors */
-  --color-text: #0f172a;
-  --color-text-muted: #64748b;
-  --color-text-light: #94a3b8;
+  /* 4. Typography Scale (Minor Third) */
+  --text-hero: clamp(2.75rem, 6vw, 4.5rem);
+  --text-h1: 2.5rem;
+  --text-h2: 2rem;
+  --text-h3: 1.5rem;
+  --text-h4: 1.25rem;
+  --text-base: 1rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
 
-  /* Borders & Shadows */
-  --color-border: #e8eaed;
-  --color-border-hover: #c9d0d8;
+  /* 5. 8px Grid Spacing System */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-20: 80px;
 
-  /* Shadow scale — from barely-there to deep lift */
-  --shadow-xs:   0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-soft: 0 4px 16px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.04);
-  --shadow-md:   0 8px 24px rgba(0, 0, 0, 0.07), 0 2px 6px rgba(0, 0, 0, 0.04);
-  --shadow-hover: 0 20px 44px -8px rgba(0, 0, 0, 0.10), 0 8px 16px -4px rgba(0, 0, 0, 0.05);
-
-  /* Typography System */
-  --font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-arabic: "Cairo", "Inter", sans-serif;
-
-  /* Spacing & Radii */
+  /* 6. Border Radius system (Aligned with UI Spec) */
   --radius-sm: 6px;
   --radius-md: 10px;
-  --radius-lg: 16px;
+  --radius-lg: 14px;
   --radius-xl: 24px;
-  --radius-full: 999px;
+  --radius-full: 9999px;
 
-  /* Layout */
-  --section-subtitle-max: 580px;
+  /* Shorthand Aliases */
+  --r-sm: var(--radius-sm);
+  --r-md: var(--radius-md);
+  --r-lg: var(--radius-lg);
+  --r-xl: var(--radius-xl);
+  --r-full: var(--radius-full);
 
-  /* Transitions */
-  --transition-fast:   0.15s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-slow:   0.48s cubic-bezier(0.16, 1, 0.3, 1);
+  /* 7. Elevation / Shadows (Premium Multi-layered) */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -2px rgba(0,0,0,0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.08), 0 10px 10px -5px rgba(0,0,0,0.04);
+  --shadow-premium: 0 1px 1px rgba(0,0,0,0.05), 0 2px 2px rgba(0,0,0,0.05), 0 4px 4px rgba(0,0,0,0.05), 0 8px 8px rgba(0,0,0,0.05), 0 16px 16px rgba(0,0,0,0.05);
+
+  /* 8. Animations & Transitions */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 0.3s var(--ease-out-expo);
+  --transition-relax: 0.5s var(--ease-out-expo);
+  --transition-fast: 0.15s var(--ease-out-expo);
+
+  /* Font Families */
+  --font-primary: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-arabic: "Readex Pro", "Outfit", sans-serif;
 }
 
 /* Base Reset */
@@ -71,11 +97,11 @@
   margin: 0;
   padding: 0;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-primary) transparent;
+  scrollbar-color: var(--brand-primary) transparent;
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -83,12 +109,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border-radius: 10px;
+  background: var(--border-hover);
+  border-radius: var(--r-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-hover);
+  background: var(--text-light);
 }
 
 html {
@@ -97,8 +123,8 @@ html {
 
 body {
   font-family: var(--font-primary);
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--bg-main);
+  color: var(--text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -113,6 +139,7 @@ optgroup {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  color: inherit;
 }
 
 [lang="ar"] body,
@@ -120,26 +147,25 @@ optgroup {
   font-family: var(--font-arabic);
 }
 
-/* Typography Extensions */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1.15;
+/* Typography Scale Implementation */
+h1 { font-size: var(--text-h1); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); }
+h4 { font-size: var(--text-h4); }
+
+h1, h2, h3, h4 {
+  line-height: 1.2;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--text-main);
   letter-spacing: -0.03em;
 }
 
 [lang="ar"] h1,
 [lang="ar"] h2,
 [lang="ar"] h3,
-[lang="ar"] h4,
-[lang="ar"] h5,
-[lang="ar"] h6 {
-  letter-spacing: 0; /* Reset letter spacing for Arabic fonts */
+[lang="ar"] h4 {
+  letter-spacing: 0;
+  line-height: 1.4;
 }
 
 a {
@@ -167,13 +193,6 @@ ul {
   text-align: right;
 }
 
-[dir="rtl"] .text-left {
-  text-align: right;
-}
-[dir="rtl"] .text-right {
-  text-align: left;
-}
-
 .text-muted {
   color: var(--color-text-muted);
 }
@@ -189,33 +208,30 @@ ul {
   background-color: var(--color-bg-alt);
 }
 
-/* Spacing Helpers */
-.mt-4 {
-  margin-top: 1rem;
-}
-.mt-6 {
-  margin-top: 1.5rem;
-}
-.mt-8 {
-  margin-top: 2rem;
-}
-.mt-12 {
-  margin-top: 3rem;
-}
+/* Spacing Helpers (8px Grid) */
+.mt-1 { margin-top: var(--s-1); }
+.mt-2 { margin-top: var(--s-2); }
+.mt-4 { margin-top: var(--s-4); }
+.mt-6 { margin-top: var(--s-6); }
+.mt-8 { margin-top: var(--s-8); }
+.mt-12 { margin-top: var(--s-12); }
+.mt-16 { margin-top: var(--s-16); }
 
-.pt-12 {
-  padding-top: 3rem;
-}
-.pb-12 {
-  padding-bottom: 3rem;
-}
-.p-8 {
-  padding: 2rem;
-}
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
+.mb-1 { margin-bottom: var(--s-1); }
+.mb-2 { margin-bottom: var(--s-2); }
+.mb-4 { margin-bottom: var(--s-4); }
+.mb-6 { margin-bottom: var(--s-6); }
+.mb-8 { margin-bottom: var(--s-8); }
+
+.p-4 { padding: var(--s-4); }
+.p-6 { padding: var(--s-6); }
+.p-8 { padding: var(--s-8); }
+
+.px-4 { padding-left: var(--s-4); padding-right: var(--s-4); }
+.px-6 { padding-left: var(--s-6); padding-right: var(--s-6); }
+
+.py-12 { padding-top: var(--s-12); padding-bottom: var(--s-12); }
+.py-16 { padding-top: var(--s-16); padding-bottom: var(--s-16); }
 
 /* Display Helpers */
 .w-100 {
@@ -242,4 +258,8 @@ ul {
 
 .fade-in {
   animation: fadeIn 0.4s ease forwards;
+}
+
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
 }

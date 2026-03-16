@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Readex+Pro:wght@200..700&display=swap"
       rel="stylesheet"
     />
 
@@ -288,14 +288,12 @@
           </a>
         </div>
 
-        <!-- Desktop Nav Links -->
-        <div class="nav-links">
-          <a href="#services" class="nav-link">خدماتنا</a>
+          <a href="#services" class="nav-link">الخدمات</a>
           <a href="#features" class="nav-link">المميزات</a>
           <a href="#pricing" class="nav-link">الأسعار</a>
-          <a href="#faq" class="nav-link">الأسئلة الشائعة</a>
-          <a href="html/tool.html" class="nav-link">المولد</a>
-          <a href="html/login.html" class="btn btn-primary btn-sm">دخول</a>
+          <a href="#faq" class="nav-link">الأسئلة</a>
+          <a href="html/tool.html" class="nav-link">المولد الذكي</a>
+          <a href="html/login.html" class="btn btn-accent btn-sm">دخول</a>
         </div>
 
         <!-- Mobile Hamburger -->
@@ -313,7 +311,6 @@
       </div>
     </nav>
 
-    <!-- Mobile Navigation Drawer -->
     <div
       class="mobile-nav"
       id="mobile-nav"
@@ -321,12 +318,12 @@
       role="dialog"
       aria-label="القائمة المتنقلة"
     >
-      <a href="#services" class="nav-link">خدماتنا</a>
+      <a href="#services" class="nav-link">الخدمات</a>
       <a href="#features" class="nav-link">المميزات</a>
       <a href="#pricing" class="nav-link">الأسعار</a>
-      <a href="#faq" class="nav-link">الأسئلة الشائعة</a>
-      <a href="html/tool.html" class="nav-link">المولد</a>
-      <a href="html/login.html" class="btn btn-primary btn-sm mobile-nav-btn"
+      <a href="#faq" class="nav-link">الأسئلة</a>
+      <a href="html/tool.html" class="nav-link">المولد الذكي</a>
+      <a href="html/login.html" class="btn btn-accent btn-sm mobile-nav-btn"
         >دخول</a
       >
     </div>
@@ -353,31 +350,29 @@
         <div class="container">
           <div class="split-layout hero-split">
             <!-- Left: Text and Actions -->
-            <div class="split-text text-left hero-text-col">
-              <span class="badge"> ميزة جديدة </span>
+            <div class="split-text hero-text-col">
+              <span class="badge">تحديث: إصدار 2.0 متاح الآن</span>
 
-              <h1 class="hero-title mt-4">ألوان تبني<br />مواقع أفضل.</h1>
+              <h1 class="hero-title">ألوان تبني<br />مواقع أفضل.</h1>
 
               <p class="hero-subtitle">
-                توقف عن التخمين في أنظمة الألوان الخاصة بك. قم بتوليد لوحات
-                ألوان كاملة ومحسنة لواجهة المستخدم والعلامات التجارية والوضع
-                الليلي فوراً.
+                توقف عن التخمين في أنظمة الألوان. قم بتوليد لوحات
+                ألوان احترافية ومحسنة لواجهة المستخدم والوضع
+                الليلي في ثوانٍ معدودة.
               </p>
 
-              <div class="hero-actions">
+              <div class="hero-actions mb-8">
                 <a
                   href="html/tool.html"
-                  class="hero-cta-btn"
+                  class="btn btn-accent btn-lg"
                   id="hero-cta-main"
                 >
-                  ابدأ التوليد
-                  <svg class="icon icon-sm">
+                  ابدأ التوليد مجاناً
+                  <svg class="icon icon-sm rtl-flip">
                     <use href="#icon-arrow-right"></use>
                   </svg>
                 </a>
-                <a href="#features" class="btn btn-secondary btn-lg"
-                  >عرض المميزات</a
-                >
+                <a href="#features" class="btn btn-secondary btn-lg">عرض المميزات</a>
               </div>
 
               <!-- Interactive Color Picker -->
@@ -434,7 +429,7 @@
               <div class="hero-dots"></div>
 
               <!-- Primary palette card -->
-              <div class="hero-palette-card">
+              <div class="hero-palette-card card">
                 <div class="hero-card-header">
                   <div class="hero-card-dots">
                     <div
@@ -468,7 +463,7 @@
               </div>
 
               <!-- Secondary UI block fragment -->
-              <div class="hero-ui-block">
+              <div class="hero-ui-block card">
                 <div class="hero-ui-block-line"></div>
                 <div class="hero-ui-block-placeholder"></div>
                 <div class="hero-ui-block-actions">
@@ -632,7 +627,7 @@
 
           <div class="steps-wrapper mt-12">
             <!-- Step 01 -->
-            <div class="step-card reveal">
+            <div class="step-card card reveal">
               <div class="step-icon-wrap">
                 <div class="step-icon-box">
                   <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
@@ -649,7 +644,7 @@
             </div>
 
             <!-- Step 02 -->
-            <div class="step-card reveal reveal-delay-1">
+            <div class="step-card card reveal reveal-delay-1">
               <div class="step-icon-wrap">
                 <div class="step-icon-box">
                   <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
@@ -666,7 +661,7 @@
             </div>
 
             <!-- Step 03 -->
-            <div class="step-card reveal reveal-delay-2">
+            <div class="step-card card reveal reveal-delay-2">
               <div class="step-icon-wrap">
                 <div class="step-icon-box">
                   <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
@@ -717,7 +712,7 @@
 
           <div class="pricing-grid">
             <!-- Starter -->
-            <div class="pricing-card reveal">
+            <div class="pricing-card card reveal">
               <div class="pricing-header">
                 <h3>الأساسي</h3>
                 <p>للمشاريع الكبيرة و الشركات.</p>
@@ -748,7 +743,7 @@
             </div>
 
             <!-- Pro (Popular) -->
-            <div class="pricing-card popular reveal reveal-delay-1">
+            <div class="pricing-card card popular reveal reveal-delay-1">
               <div class="pricing-header">
                 <h3>المحترف</h3>
                 <p>للمصممين المحترفين الذين يبحثون عن الكمال.</p>
@@ -783,7 +778,7 @@
             </div>
 
             <!-- Team -->
-            <div class="pricing-card reveal reveal-delay-2">
+            <div class="pricing-card card reveal reveal-delay-2">
               <div class="pricing-header">
                 <h3>الفريق</h3>
                 <p>لفرق التصميم والوكالات الإبداعية.</p>
@@ -831,7 +826,7 @@
           </p>
 
           <div class="testimonials-grid">
-            <div class="testimonial-card reveal">
+            <div class="testimonial-card card reveal">
               <div class="testimonial-stars">★★★★★</div>
               <p class="testimonial-content">
                 "لقد غير كولور لاب تماماً كيفية تعاملي مع جلسات التصميم الأولية.
@@ -851,7 +846,7 @@
                 </div>
               </div>
             </div>
-            <div class="testimonial-card reveal reveal-delay-1">
+            <div class="testimonial-card card reveal reveal-delay-1">
               <div class="testimonial-stars">★★★★★</div>
               <p class="testimonial-content">
                 "الأدوار الدلالية للواجهة غيرت قواعد اللعبة. القدرة على نسخ
@@ -871,7 +866,7 @@
                 </div>
               </div>
             </div>
-            <div class="testimonial-card reveal reveal-delay-2">
+            <div class="testimonial-card card reveal reveal-delay-2">
               <div class="testimonial-stars">★★★★★</div>
               <p class="testimonial-content">
                 "ميزة المعاينة الحية وحدها تستحق العناء. رؤية لوحة الألوان مطبقة
@@ -920,9 +915,9 @@
                 موقع تسويق حيوياً، يوفر كولور لاب الأساس الرياضي لهويتك البصرية.
               </p>
               <div class="hero-actions mt-8">
-                <a href="html/tool.html" class="btn btn-primary">
+                <a href="html/tool.html" class="btn btn-accent">
                   جرب المولد
-                  <svg class="icon icon-sm">
+                  <svg class="icon icon-sm rtl-flip">
                     <use href="#icon-arrow-right"></use>
                   </svg>
                 </a>
@@ -1181,7 +1176,7 @@
           </div>
 
           <div class="faq-accordion">
-            <div class="faq-card">
+            <div class="faq-card card">
               <div class="faq-header">
                 <h4>هل كولور لاب مجاني للاستخدام؟</h4>
                 <svg class="faq-chevron icon">
@@ -1198,7 +1193,7 @@
                 </div>
               </div>
             </div>
-            <div class="faq-card">
+            <div class="faq-card card">
               <div class="faq-header">
                 <h4>هل يمكنني استخدام لوحات الألوان في المشاريع التجارية؟</h4>
                 <svg class="faq-chevron icon">
@@ -1215,7 +1210,7 @@
                 </div>
               </div>
             </div>
-            <div class="faq-card">
+            <div class="faq-card card">
               <div class="faq-header">
                 <h4>هل يدعم كولور لاب أنماطاً مختلفة من المواقع؟</h4>
                 <svg class="faq-chevron icon">
@@ -1232,7 +1227,7 @@
                 </div>
               </div>
             </div>
-            <div class="faq-card">
+            <div class="faq-card card">
               <div class="faq-header">
                 <h4>هل يمكنني حفظ لوحاتي المفضلة؟</h4>
                 <svg class="faq-chevron icon">
@@ -1249,7 +1244,7 @@
                 </div>
               </div>
             </div>
-            <div class="faq-card">
+            <div class="faq-card card">
               <div class="faq-header">
                 <h4>كيف تعمل خوارزمية توليد الألوان؟</h4>
                 <svg class="faq-chevron icon">
@@ -1275,7 +1270,7 @@
     <!-- =======================================================================
          FOOTER
          ======================================================================= -->
-    <footer class="footer pt-12 pb-12" role="contentinfo">
+    <footer class="footer" role="contentinfo">
       <div class="container">
         <div class="footer-top">
           <div class="footer-col footer-brand">

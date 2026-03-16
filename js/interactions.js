@@ -387,25 +387,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ------------------------------------------------------------------
-       11. CARD TILT — Subtle mouse-parallax effect
-       NOTE: Skips .pricing-card.popular (it has a CSS animation running)
+       11. PREMIUM CARD INTERACTIONS — Spotlight Effect + Modern Parallax
        ------------------------------------------------------------------ */
-    const tiltCards = document.querySelectorAll('.feature-card, .service-card');
+    const spotlightCards = document.querySelectorAll('.card');
 
-    // Only apply tilt on non-touch devices
-    const isTouch = window.matchMedia('(hover: none)').matches;
+    const handleMouseMove = (e, card) => {
+        const rect = card.getBoundingClientRect();
+        
+        // Spotlight position
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+
+        // Subtle Parallax (only if not a popular pricing card which has constant animation)
+        if (!card.classList.contains('popular')) {
+            const tiltX = (y / rect.height - 0.5) * -4; // Max 4deg
+            const tiltY = (x / rect.width - 0.5) * 4;
+            card.style.transform = `translateY(-8px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+        }
+    };
+
+    const resetCard = (card) => {
+        card.style.transform = '';
+    };
+
     if (!isTouch) {
-        tiltCards.forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = (e.clientX - rect.left) / rect.width  - 0.5;
-                const y = (e.clientY - rect.top)  / rect.height - 0.5;
-                card.style.transform = `translateY(-3px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
-            });
+        spotlightCards.forEach(card => {
+            card.addEventListener('mousemove', e => handleMouseMove(e, card));
+            card.addEventListener('mouseleave', () => resetCard(card));
         });
     }
 
